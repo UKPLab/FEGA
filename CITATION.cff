@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: >-
+  Please cite the accompanying paper when using FEGA. The public paper link
+  will be added before public release.
+title: "FEGA: Feature-Effect Geometry Analysis"
+type: software
+authors:
+  - family-names: Hoang
+    given-names: Phu Gia
+  - family-names: Chatterjee
+    given-names: Anwoy
+contact:
+  - family-names: Hoang
+    given-names: Phu Gia
+    email: hoanggiaphu26@gmail.com
+version: 0.4.2
+license: Apache-2.0
+repository-code: https://github.com/UKPLab/FEGA
+# TODO(public release): add the paper DOI or public URL when it is available.
+preferred-citation:
+  type: article
+  title: >-
+    Sparse Autoencoders Encode Both Concepts and Functions: The Downstream
+    Geometry of Feature Effects
+  authors:
+    - family-names: Hoang
+      given-names: Phu Gia
+    - family-names: Chatterjee
+      given-names: Anwoy
+    - family-names: Chakraborty
+      given-names: Tanmoy
+    - family-names: Gurevych
+      given-names: Iryna
+    - family-names: Dutta
+      given-names: Subhabrata
+  year: 2026

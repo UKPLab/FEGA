@@ -1,0 +1,117 @@
+run_id: city_country_gemma2_16k_sae_v1
+
+reference_json: ../../../../data/instance_eval_results/ravel/saebench_gemma-2-2b_width-2pow16_date-0107_gemma-2-2b_top_k_width-2pow16_date-0107_resid_post_layer_12_trainer_2_custom_sae_eval_results.json
+sae_repo_id: canrager/saebench_gemma-2-2b_width-2pow16_date-0107
+
+output_root: results/fega
+device: cpu
+cache_dir: null
+download_saes_dir: data/downloaded_saes
+mdbm_root: ../../../../data/mdbm/ravel
+mdbm_weight_path: null           # optional explicit MDBM checkpoint path
+entity_attribute_selection:
+  city: ["Country"]
+seed:
+  global: 42
+  selection_seed: 42
+reuse_model_across_phases: true
+
+phases:
+  data_prep:
+    enabled: true
+    batch_size: 256
+    save_chunk_size: 512
+    single_file: false
+    limit: 5000
+    tau_act: 0.0
+    max_contexts: 64
+    min_contexts: 8
+    readouts: ["final_resid"]
+    gram_cache: true
+    gram_cache_dtype: float64
+
+  compute_effect:
+    enabled: true
+    batch_size: 1024
+    min_coverage: 8
+    normalization_eps: 1.0e-12
+    tau_zero: 1.0e-12
+    effect_shard_size: 4096
+    cache_max_chunks: 24
+    cache_max_bytes: 32212254720 # 30 GiB
+
+  geometry_metrics:
+    enabled: true
+    effect_space: final_resid
+    c_ray:
+      enabled: true
+      method: fast_formula
+      store_r2: true
+      eps: 1.0e-12
+    span:
+      enabled: true
+      k_values: [1, 2, 3, 4, 8]
+      eps: 1.0e-12
+    resid:
+      enabled: true
+      k_values: [1, 2, 3, 4]
+      eps: 1.0e-12
+    effective_rank:
+      enabled: true
+      eps: 1.0e-12
+
+  vmf:
+    enabled: true
+    backend: dense_cpu
+    resume: true
+    checkpoint_flush_features: 64
+    effect_space: pre_softcap_logits
+    max_vocab_buffers: 16
+    workers: 16
+    k_values: [1, 2, 3, 4]
+    bic_tolerance: 1.0e-9
+    resample_fraction: 0.80
+    resample_rounds: 8
+    seed: null
+    n_init: 4
+    max_iter: 200
+
+  stability:
+    enabled: true
+    effect_space: final_resid
+    workers: 16
+    resume: true
+    checkpoint_flush_features: 64
+    seed: null
+    scalar:
+      enabled: true
+      bootstrap_rounds: 200
+      ci_quantiles: [0.025, 0.975]
+    subspace:
+      enabled: true
+      k_values: [1, 2, 3, 4, 8]
+      resample_fraction: 0.75
+      resample_rounds: 20
+      angle_p90_quantile: 0.90
+      eig_floor: 1.0e-8
+    sample_size:
+      enabled: true
+      target_sizes: [8, 16, 32, 64, 128, 256]
+      subset_rounds: 20
+      strong_subset_rounds: 50
+      max_enumerated_subsets: 20
+    leave_out:
+      enabled: true
+      max_leave_two_out_pairs: 20
+      min_group_count: 2
+      min_group_size: 2
+
+  geometry_reporting:
+    enabled: true
+    threshold_profile: paper # single published FEGA threshold profile
+    atlas_include_insufficient_evidence: false
+    map_enabled: true
+    embedding: auto
+    seed: null
+    eps: 1.0e-12
+    write_csv: true

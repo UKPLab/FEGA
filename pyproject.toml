@@ -1,0 +1,182 @@
+[tool.poetry]
+name = "fega"
+version = "0.4.2"
+description = "Feature Effect Geometry Analysis for sparse autoencoders"
+authors = ["Phu Gia Hoang", "Anwoy Chatterjee"]
+maintainers = ["Phu Gia Hoang <hoanggiaphu26@gmail.com>"]
+license = "Apache-2.0"
+readme = "README.md"
+packages = [{ include = "fega" }, { include = "sae_bench", from = "external" }]
+include = [
+    { path = "fega/core/vmf/backend_policy.json", format = ["sdist", "wheel"] },
+    { path = "LICENSE", format = ["sdist", "wheel"] },
+    { path = "NOTICE", format = ["sdist", "wheel"] },
+    { path = "CITATION.cff", format = ["sdist", "wheel"] },
+    { path = "THIRD_PARTY_LICENSES/spherecluster-MIT.txt", format = ["sdist", "wheel"] },
+]
+homepage = "https://github.com/UKPLab/FEGA"
+repository = "https://github.com/UKPLab/FEGA"
+keywords = ["sparse-autoencoders", "mechanistic-interpretability", "feature-effect-geometry"]
+classifiers = ["Topic :: Scientific/Engineering :: Artificial Intelligence"]
+
+[project]
+name = "fega"
+version = "0.4.2"
+description = "Feature Effect Geometry Analysis for sparse autoencoders"
+readme = "README.md"
+authors = [
+    { name = "Phu Gia Hoang" },
+    { name = "Anwoy Chatterjee" },
+]
+maintainers = [
+    { name = "Phu Gia Hoang", email = "hoanggiaphu26@gmail.com" },
+]
+license = { file = "LICENSE" }
+requires-python = ">=3.10,<4.0"
+dependencies = [
+    "sae-lens>=5.4.0,<6.0.0",
+    "transformers==4.44.1",
+    "transformer-lens>=2.0.0",
+    "torch==2.10.0+cu128",
+    "einops>=0.8.0",
+    "numpy>=1.26.4,<2.0",
+    "pandas>=2.1.2",
+    "tqdm>=4.66.4",
+    "jaxtyping>=0.2.25",
+    "beartype>=0.14.1",
+    "scikit-learn>=1.5.2",
+    "scipy>=1.11",
+    "threadpoolctl>=3.6,<4.0",
+    "umap-learn>=0.5.6,<0.6",
+    "spherecluster>=0.1.7",
+    "collectibles>=0.1.5",
+    "pydantic>=2.9.2",
+    "seaborn>=0.13.2",
+    "plotly>=5.22.0",
+    "matplotlib>=3.8.4",
+    "tabulate>=0.9.0",
+    "openai>=1.0.0",
+    "torchvision==0.25.0+cu128",
+    "nltk>=3.8",
+]
+
+[project.urls]
+Homepage = "https://github.com/UKPLab/FEGA"
+Repository = "https://github.com/UKPLab/FEGA"
+Issues = "https://github.com/UKPLab/FEGA/issues"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.2",
+    "nbformat>=5.10.4",
+    "ipykernel>=6.29.5",
+    "nbstripout>=0.7.1",
+    "loguru>=0.7.0",
+    "ruff>=0.9.2,<0.10.0",
+    "pyright>=1.1.392.post0,<2.0.0",
+    "pre-commit>=4.1.0,<5.0.0",
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu128" }
+torchvision = { index = "pytorch-cu128" }
+
+[tool.poetry.dependencies]
+python = "^3.10,"
+sae_lens = "^5.4.0"
+transformers = "==4.44.1"
+transformer-lens = ">=2.0.0"
+torch = "==2.10.0+cu128"
+einops = ">=0.8.0"
+numpy = ">=1.26.4,<2.0"
+pandas = ">=2.1.2"
+tqdm = ">=4.66.4"
+jaxtyping = ">=0.2.25"
+beartype = ">=0.14.1"
+scikit-learn = ">=1.5.2"
+scipy = ">=1.11"
+threadpoolctl = ">=3.6,<4.0"
+umap-learn = ">=0.5.6,<0.6"
+spherecluster = ">=0.1.7"
+collectibles = ">=0.1.5"
+pydantic = ">=2.9.2"
+seaborn = ">=0.13.2"
+plotly = ">=5.22.0"
+matplotlib = ">=3.8.4"
+tabulate = ">=0.9.0"
+openai = ">=1.0.0"
+torchvision = "==0.25.0+cu128" # required for what I believe are nnsight related issues
+nltk = ">=3.8"
+
+# If running into dependency issues these are tested and working
+# [tool.poetry.dependencies]
+# python = "^3.10"
+# beartype = "0.14.1"
+# collectibles = "0.1.5"
+# einops = "0.8.0"
+# jaxtyping = "0.2.37"
+# matplotlib = "3.10.0"
+# numpy = "1.26.4"
+# openai = "1.61.1"
+# pandas = "2.2.3"
+# plotly = "5.24.1"
+# pydantic = "2.10.6"
+# scikit-learn = "1.6.1"
+# seaborn = "0.13.2"
+# tabulate = "0.9.0"
+# torch = "2.5.1"
+# torchvision = "0.20.1"
+# tqdm = "4.67.1"
+# transformer-lens = "2.11.0"
+# sae_lens = "5.4.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = ">=8.0.2"
+nbformat = ">=5.10.4"
+ipykernel = ">=6.29.5"
+nbstripout = ">=0.7.1"
+loguru = ">=0.7.0"
+ruff = "^0.9.2"
+pyright = "^1.1.392.post0"
+pre-commit = "^4.1.0"
+
+[tool.pyright]
+typeCheckingMode = "standard"
+reportPrivateImportUsage = "none"
+
+[tool.pytest.ini_options]
+markers = [
+    "local_gpt2_gpu: local opt-in GPU smoke tests for GPT-2 fixtures",
+    "real_ravel_gpu: real opt-in GPU smoke tests for RAVEL/Gemma data prep",
+]
+
+[tool.ruff]
+exclude = ["dist", "docs", "*.ipynb"]
+
+[tool.ruff.lint]
+ignore = ["E203", "E501", "E731", "F722", "F821", "ARG001", "ARG005"]
+extend-select = ["UP", "TID", "I", "F", "E", "ARG"]
+
+[tool.ruff.lint.flake8-tidy-imports.banned-api]
+"typing.Union".msg = "Use `|` instead"
+"typing.Optional".msg = "Use `| None` instead"
+"typing.Dict".msg = "Use `dict` instead"
+"typing.Tuple".msg = "Use `tuple` instead"
+"typing.List".msg = "Use `list` instead"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.semantic_release]
+version_toml = [
+    "pyproject.toml:tool.poetry.version",
+    "pyproject.toml:project.version",
+]
+branch = "main"
+build_command = "pip install poetry && poetry build"

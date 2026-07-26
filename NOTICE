@@ -1,0 +1,49 @@
+-------------------------------------------------------------------------------
+Copyright 2026
+Ubiquitous Knowledge Processing (UKP) Lab
+Technische Universität Darmstadt
+
+-------------------------------------------------------------------------------
+Third party legal information
+
+FEGA includes or adapts the following third-party material. These components
+are not covered by FEGA's Apache License 2.0 except where their own licenses
+permit redistribution under those terms.
+
+spherecluster
+- Source: https://github.com/jasonlaska/spherecluster
+- License: MIT
+- Copyright: 2016 Clara Labs
+- Local license: THIRD_PARTY_LICENSES/spherecluster-MIT.txt
+- FEGA retains and adapts spherical k-means and vMF mixture code under
+  fega/core/vmf/utils/_spherecluster/.
+
+Stack Overflow answer by Erwin, "Problems using spherecluster package for
+spherical k-mean clustering"
+- Source: https://stackoverflow.com/questions/72572969/problems-using-spherecluster-package-for-spherical-k-mean-clustering
+- License: Creative Commons Attribution-ShareAlike 4.0 International
+- License text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+- FEGA's spherical-k-means compatibility edits credit this answer in
+  fega/core/vmf/utils/_spherecluster/_spk.py.
+
+Illusion or Algorithm? ICL task code
+- Source: https://github.com/UKPLab/tmlr2025-icl-investigation
+- License: Apache License 2.0
+- Copyright: 2024 Ubiquitous Knowledge Processing (UKP) Lab,
+  Technische Universität Darmstadt
+- Local license and notice: external/icl-tasks/LICENSE and
+  external/icl-tasks/NOTICE.txt
+
+PrOntoQA
+- Source: https://github.com/asaparov/prontoqa
+- License: Apache License 2.0
+- Local license: external/prontoqa/LICENSE
+
+SAEBench
+- Source: https://github.com/adamkarvonen/SAEBench
+- Retained snapshot: external/sae_bench/
+- No license file was present in the retained snapshot or visible in the
+  referenced upstream repository at the time this notice was prepared.
+- This material is not covered by FEGA's Apache License 2.0. It is retained in
+  this private repository solely for research reproducibility and must not be
+  publicly redistributed until permission or an applicable license is confirmed.

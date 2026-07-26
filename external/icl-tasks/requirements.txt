@@ -1,0 +1,8 @@
+transformer_lens
+notebook
+nltk
+datasets
+scikit-learn
+matplotlib
+circuitsvis
+seaborn

@@ -1,0 +1,41 @@
+# Python environments and caches
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.coverage
+
+# Local credentials
+.env
+.env.*
+!.env.example
+key.sh
+openai_api_key.txt
+*.pem
+*.key
+id_rsa
+id_ed25519
+
+# Editor and OS files
+.DS_Store
+.vscode/
+
+# Build and runtime outputs
+dist/
+images/
+results/
+artifacts/
+test_results/
+*eval_results*
+dev/
+mdbm/
+/.fega_baseline/
+
+# FEGA data and model caches
+/data/
+/external/sae_bench/evals/ravel/data/
+/external/sae_bench/evals/ravel/models/
+/prontoqa_induction_rule.json

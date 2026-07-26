@@ -1,0 +1,126 @@
+{
+  "policy": {
+    "cpu_factor": {
+      "cpu_numerical_fingerprint": {
+        "blas_configuration": "USE_64BITINT=1 DYNAMIC_ARCH=1 DYNAMIC_OLDER= NO_CBLAS= NO_LAPACK= NO_LAPACKE= NO_AFFINITY=1 USE_OPENMP= HASWELL MAX_THREADS=2",
+        "blas_name": "openblas64",
+        "blas_thread_pools": "[{\"architecture\":\"SkylakeX\",\"internal_api\":\"openblas\",\"num_threads\":16,\"prefix\":\"libopenblas\",\"threading_layer\":\"pthreads\",\"user_api\":\"blas\",\"version\":\"0.3.23.dev\"},{\"architecture\":\"SkylakeX\",\"internal_api\":\"openblas\",\"num_threads\":16,\"prefix\":\"libscipy_openblas\",\"threading_layer\":\"pthreads\",\"user_api\":\"blas\",\"version\":\"0.3.28\"}]",
+        "blas_version": "0.3.23.dev",
+        "numpy": "1.26.4",
+        "python_implementation": "CPython",
+        "python_version": "3.10.19",
+        "scipy": "1.15.3",
+        "thread_environment": "{\"MKL_NUM_THREADS\":\"<unset>\",\"NUMEXPR_NUM_THREADS\":\"<unset>\",\"OMP_NUM_THREADS\":\"<unset>\",\"OPENBLAS_NUM_THREADS\":\"<unset>\"}",
+        "threadpoolctl": "3.6.0"
+      },
+      "observed_error_envelopes": {
+        "bic": 0.000481531023979187,
+        "convergence": 5.7830296107397317e-11,
+        "initialization_likelihood": 0.0002407655119895935,
+        "kmeans_distance": 2.220446049250313e-15,
+        "kmeans_mass": 1.4209966536782304e-10,
+        "kmeans_potential": 8.068758994284053e-10,
+        "posterior_score": 4.656612873077393e-10,
+        "resultant": 1.971081076135306e-10
+      },
+      "promoted": true,
+      "source_fingerprint": {
+        "factor_em_source_sha256": "1e0eb650a884ca706b98b5647253aa1c66e551a9300be09547405b610c5de896",
+        "factor_source_sha256": "5705ced1b22fe80efa8e59f4c544fa65c0d0889675f3e9966066c580a201d26f"
+      },
+      "validated_domain": {
+        "ambient_dimension_inclusive": [
+          2,
+          256000
+        ],
+        "coordinates": "all_n_no_truncation",
+        "dtype": "float64",
+        "explicit_provider": "row_ordered_normalized_y",
+        "hidden_gram_repairs": "forbidden",
+        "row_count_inclusive": [
+          2,
+          64
+        ]
+      }
+    },
+    "gpu_factor": {
+      "factor_cpu_numerical_fingerprint": {
+        "blas_configuration": "USE_64BITINT=1 DYNAMIC_ARCH=1 DYNAMIC_OLDER= NO_CBLAS= NO_LAPACK= NO_LAPACKE= NO_AFFINITY=1 USE_OPENMP= HASWELL MAX_THREADS=2",
+        "blas_name": "openblas64",
+        "blas_thread_pools": "[{\"architecture\":\"SkylakeX\",\"internal_api\":\"openblas\",\"num_threads\":16,\"prefix\":\"libopenblas\",\"threading_layer\":\"pthreads\",\"user_api\":\"blas\",\"version\":\"0.3.23.dev\"},{\"architecture\":\"SkylakeX\",\"internal_api\":\"openblas\",\"num_threads\":16,\"prefix\":\"libscipy_openblas\",\"threading_layer\":\"pthreads\",\"user_api\":\"blas\",\"version\":\"0.3.28\"}]",
+        "blas_version": "0.3.23.dev",
+        "numpy": "1.26.4",
+        "python_implementation": "CPython",
+        "python_version": "3.10.19",
+        "scipy": "1.15.3",
+        "thread_environment": "{\"MKL_NUM_THREADS\":\"<unset>\",\"NUMEXPR_NUM_THREADS\":\"<unset>\",\"OMP_NUM_THREADS\":\"<unset>\",\"OPENBLAS_NUM_THREADS\":\"<unset>\"}",
+        "threadpoolctl": "3.6.0"
+      },
+      "factor_source_fingerprint": {
+        "factor_em_source_sha256": "1e0eb650a884ca706b98b5647253aa1c66e551a9300be09547405b610c5de896",
+        "factor_source_sha256": "5705ced1b22fe80efa8e59f4c544fa65c0d0889675f3e9966066c580a201d26f"
+      },
+      "gpu_numerical_fingerprint": {
+        "backend": "factor_gpu_explicit_y_float64",
+        "compute_capability": [
+          8,
+          0
+        ],
+        "cublas_workspace_config": ":4096:8",
+        "cuda_runtime_version": "12.8",
+        "cudnn_version": "91002",
+        "deterministic_algorithms": true,
+        "device_index": 0,
+        "device_name": "NVIDIA A100-PCIE-40GB",
+        "dtype": "float64",
+        "feature_sharding": "ordered_feature_ids_single_worker",
+        "matmul_precision": "highest",
+        "nvidia_driver_version": "590.48.01",
+        "python_implementation": "CPython",
+        "python_version": "3.10.19",
+        "reduction_order": "fixed_tensor_shape_single_stream",
+        "stream_count": 1,
+        "synchronization_policy": "before_and_after_timed_regions",
+        "tf32_cudnn": false,
+        "tf32_matmul": false,
+        "torch_git_version": "449b1768410104d3ed79d3bcfe4ba1d65c7f22c0",
+        "torch_version": "2.10.0+cu128",
+        "total_memory_bytes": 42405855232
+      },
+      "observed_error_envelopes": {
+        "bic": 0.000481531023979187,
+        "convergence": 5.783040712969978e-11,
+        "initialization_likelihood": 0.0002407655119895935,
+        "kmeans_distance": 2.220446049250313e-15,
+        "kmeans_mass": 1.4210144172466244e-10,
+        "kmeans_potential": 8.06876787606825e-10,
+        "posterior_score": 4.656612873077393e-10,
+        "resultant": 1.971081076135306e-10
+      },
+      "promoted": true,
+      "source_fingerprint": {
+        "gpu_em_source_sha256": "c0e6c1d85f34306d2dbb53e748de435070b8f53589df45b28f3082fe9673271d",
+        "gpu_source_sha256": "f8c8a83c692b5a166161763209e3c9e7fb2a258028c4cc1596310bb1bcabddce"
+      },
+      "validated_domain": {
+        "ambient_dimension_inclusive": [
+          2,
+          256000
+        ],
+        "backend": "factor_gpu_explicit_y_float64",
+        "coordinates": "all_n_no_truncation",
+        "dtype": "float64",
+        "feature_workers": 1,
+        "row_count_inclusive": [
+          2,
+          64
+        ],
+        "source_factor": "accepted_cpu_explicit_y",
+        "streams": 1
+      }
+    },
+    "policy_version": 1
+  },
+  "policy_sha256": "9e355ec363e7f95e9f980ed88b8b69f92031ff4b01c32bbb46f220d1b6948828",
+  "schema_version": 1
+}
