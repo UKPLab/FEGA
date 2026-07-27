@@ -3,7 +3,7 @@ name = "fega"
 version = "0.4.2"
 description = "Feature Effect Geometry Analysis for sparse autoencoders"
 authors = ["Phu Gia Hoang", "Anwoy Chatterjee"]
-maintainers = ["Phu Gia Hoang <hoanggiaphu26@gmail.com>"]
+maintainers = ["Phu Gia Hoang <phu.hoang@tu-darmstadt.de>"]
 license = "Apache-2.0"
 readme = "README.md"
 packages = [{ include = "fega" }, { include = "sae_bench", from = "external" }]
@@ -29,7 +29,7 @@ authors = [
     { name = "Anwoy Chatterjee" },
 ]
 maintainers = [
-    { name = "Phu Gia Hoang", email = "hoanggiaphu26@gmail.com" },
+    { name = "Phu Gia Hoang", email = "phu.hoang@tu-darmstadt.de" },
 ]
 license = { file = "LICENSE" }
 requires-python = ">=3.10,<4.0"
