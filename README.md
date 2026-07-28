@@ -1,6 +1,6 @@
 # FEGA: Feature-Effect Geometry Analysis
 
-[![arXiv](https://img.shields.io/badge/arXiv-TBA-b31b1b.svg)](#citation)
+[![arXiv](https://img.shields.io/badge/arXiv-2607.24645-b31b1b.svg)](https://arxiv.org/abs/2607.24645)
 [![License](https://img.shields.io/badge/license-Apache_2.0-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.10-blue.svg)](SETUP.md)
 
@@ -202,15 +202,14 @@ and metrics. Use `--palette-json palette.json` to change colors with hex codes.
 
 ## Citation
 
-A preprint will be made available publicly; please check back here for the final
-citation once it is posted.
+The paper is available on arXiv: [arXiv:2607.24645](https://arxiv.org/abs/2607.24645).
 
 ```bibtex
 @article{hoang2026sparse,
   title  = {Sparse Autoencoders Encode Both Concepts and Functions: The Downstream Geometry of Feature Effects},
   author = {Hoang, Phu Gia and Chatterjee, Anwoy and Chakraborty, Tanmoy and Gurevych, Iryna and Dutta, Subhabrata},
   year   = {2026},
-  note   = {Preprint, link to be added.}
+  note   = {arXiv preprint arXiv:2607.24645}
 }
 ```
 
