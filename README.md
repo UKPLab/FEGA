@@ -205,11 +205,14 @@ and metrics. Use `--palette-json palette.json` to change colors with hex codes.
 The paper is available on arXiv: [arXiv:2607.24645](https://arxiv.org/abs/2607.24645).
 
 ```bibtex
-@article{hoang2026sparse,
-  title  = {Sparse Autoencoders Encode Both Concepts and Functions: The Downstream Geometry of Feature Effects},
-  author = {Hoang, Phu Gia and Chatterjee, Anwoy and Chakraborty, Tanmoy and Gurevych, Iryna and Dutta, Subhabrata},
-  year   = {2026},
-  note   = {arXiv preprint arXiv:2607.24645}
+@misc{hoang2026sparseautoencodersencodeconcepts,
+  title         = {Sparse Autoencoders Encode Both Concepts and Functions: The Downstream Geometry of Feature Effects},
+  author        = {Phu Gia Hoang and Anwoy Chatterjee and Tanmoy Chakraborty and Iryna Gurevych and Subhabrata Dutta},
+  year          = {2026},
+  eprint        = {2607.24645},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  url           = {https://arxiv.org/abs/2607.24645},
 }
 ```
 
