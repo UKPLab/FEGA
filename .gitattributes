@@ -1,0 +1,10 @@
+# Keep source and site files consistent across Windows, macOS, and Linux.
+* text=auto eol=lf
+
+# Never perform text conversion on generated visual assets.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.svg text eol=lf
