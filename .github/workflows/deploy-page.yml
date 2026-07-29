@@ -28,7 +28,7 @@ jobs:
         working-directory: page
         run: |
           bundle install
-          bundle exec jekyll build --destination ../_site
+          bundle exec jekyll build --destination ../_site --baseurl /FEGA
       - name: Publish to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
