@@ -2,6 +2,16 @@
 
 This folder is a standalone Jekyll project page based on the UKP Academic Project Page template.
 
+## Refresh the RAVEL atlas data
+
+The interactive atlas is derived from the checked-in RAVEL artifacts, not hand-authored page data. From the repository root, run this in the FEGA Python environment after results change:
+
+```bash
+python page/scripts/export_results.py
+```
+
+It reads `results/fega/ravel/` and writes compact page assets below `page/assets/generated/`. It does not modify `.paper/` or `results/`.
+
 ## Run locally
 
 From the repository root:

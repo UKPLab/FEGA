@@ -82,7 +82,11 @@ def copy_feature_assets(run_root: Path, label: str, feature_id: int, architectur
     destination_dir = OUTPUT_ROOT / "features" / architecture / label / f"f{feature_id}"
     destination_dir.mkdir(parents=True, exist_ok=True)
     assets: dict[str, str] = {}
-    for source_name, target_name in (("card.png", "card.png"), ("projection_2d.png", "projection.png")):
+    for source_name, target_name in (
+        ("card.png", "card.png"),
+        ("projection_2d.png", "projection.png"),
+        ("sphere_surface.png", "sphere.png"),
+    ):
         source = source_dir / source_name
         if source.exists():
             destination = destination_dir / target_name
