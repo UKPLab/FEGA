@@ -1,0 +1,150 @@
+---
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="FEGA studies the downstream geometry of sparse autoencoder feature effects.">
+    <title>{{ site.title }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- The UKP template is an adoption of Academic Project Page Template. -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/eliahuhorwitz/Academic-project-page-template@master/static/css/index.css">
+    <link rel="stylesheet" href="{{ '/assets/css/fega.css' | relative_url }}">
+  </head>
+  <body>
+    <nav class="site-nav" aria-label="Page navigation">
+      <a class="wordmark" href="#top" aria-label="FEGA home"><span>FE</span>GA</a>
+      <div class="nav-links">
+        <a href="#abstract">Abstract</a>
+        <a href="#explorer">Explorer</a>
+        <a href="#method">Method</a>
+        <a href="#citation">Citation</a>
+      </div>
+    </nav>
+
+    <main id="top">
+      <section class="hero publication-header">
+        <div class="hero-body">
+          <div class="container is-max-desktop has-text-centered">
+            <p class="eyebrow">UKP Lab · Technical University of Darmstadt</p>
+            <h1 class="title is-1 publication-title">Sparse Autoencoders Encode Both Concepts and Functions: The Downstream Geometry of Feature Effects</h1>
+            <div class="publication-authors">
+              <span class="author-block"><a href="https://phusroyal.github.io/">Phu Gia Hoang</a></span>
+              <span class="author-block"><a href="https://c-anwoy.github.io/">Anwoy Chatterjee</a></span>
+              <span class="author-block"><a href="https://tanmoychak.com">Tanmoy Chakraborty</a></span>
+              <span class="author-block"><a href="https://www.informatik.tu-darmstadt.de/ukp/ukp_home/head_ukp/index.en.jsp">Iryna Gurevych</a></span>
+              <span class="author-block"><a href="https://subha0009.github.io/">Subhabrata Dutta</a></span>
+            </div>
+            <p class="publication-venue">arXiv 2026 · Feature-Effect Geometry Analysis (FEGA)</p>
+            <div class="publication-links">
+              <span class="link-block"><a class="external-link button is-dark" href="https://arxiv.org/abs/2607.24645"><span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper</span></a></span>
+              <span class="link-block"><a class="external-link button is-dark" href="https://github.com/UKPLab/FEGA"><span class="icon"><i class="fab fa-github"></i></span><span>Code</span></a></span>
+              <span class="link-block"><a class="external-link button is-dark" href="#explorer"><span class="icon"><i class="fas fa-circle-nodes"></i></span><span>Explore FEGA</span></a></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="hero teaser is-light">
+        <div class="hero-body">
+          <div class="container is-max-desktop">
+            <div class="teaser-grid">
+              <div>
+                <p class="section-kicker">From a feature to its effects</p>
+                <h2 class="title is-3 has-text-left">A feature is not always a reusable direction.</h2>
+                <p class="teaser-copy">FEGA removes one active SAE latent across many contexts, measures the resulting logit-effect vectors, and studies the geometry of that cloud in output space.</p>
+              </div>
+              <figure class="teaser-figure">
+                <img src="{{ '/assets/images/unified_labels.png' | relative_url }}" alt="Diagram of the geometry families and flags reported by FEGA" loading="eager">
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="abstract">
+        <div class="container is-max-desktop">
+          <h2 class="title is-3 has-text-centered">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>Feature-Effect Geometry Analysis (FEGA) tests how a sparse autoencoder feature changes a language model’s output across many contexts. Rather than collapsing the feature to one steering vector, it represents its downstream logit effects as an empirical cloud and asks whether that cloud is one-dimensional, low-dimensional, clustered, or diffuse.</p>
+            <p>Across SAE variants, clean one-dimensional effects are rare. FEGA distinguishes <strong>value-like</strong> features, associated with more structured effects, from <strong>pointer-like</strong> features, whose context-dependent operations tend to yield diffuse geometry. This connects feature geometry, steering, and semantic multiplicity.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section explorer-section" id="explorer">
+        <div class="container is-max-desktop">
+          <p class="section-kicker has-text-centered">Interactive explainer</p>
+          <h2 class="title is-3 has-text-centered">Explore effect geometry</h2>
+          <p class="explainer-note has-text-centered">Choose a schematic geometry to see what FEGA would test. This is an explanatory visualization—not a reported experimental result.</p>
+          <div class="explorer-shell">
+            <div class="geometry-controls" role="group" aria-label="Choose a geometry family">
+              <button class="geometry-choice is-active" data-family="directional" aria-pressed="true"><span class="choice-dot directional"></span>Directional</button>
+              <button class="geometry-choice" data-family="subspace" aria-pressed="false"><span class="choice-dot subspace"></span>Low-dimensional</button>
+              <button class="geometry-choice" data-family="clustered" aria-pressed="false"><span class="choice-dot clustered"></span>Clustered</button>
+              <button class="geometry-choice" data-family="diffuse" aria-pressed="false"><span class="choice-dot diffuse"></span>Diffuse</button>
+            </div>
+            <div class="geometry-stage">
+              <div class="plot-meta"><span id="plot-family">Directional</span><span>contexts → logit-effect vectors</span></div>
+              <svg id="geometry-plot" viewBox="0 0 640 360" role="img" aria-labelledby="plot-title plot-description">
+                <title id="plot-title">Schematic effect geometry</title>
+                <desc id="plot-description">A directional effect cloud</desc>
+                <defs><linearGradient id="vector-gradient" x1="0" x2="1"><stop stop-color="#1d4ed8"/><stop offset="1" stop-color="#f97316"/></linearGradient></defs>
+                <line class="axis" x1="60" y1="300" x2="590" y2="300"></line>
+                <line class="axis" x1="60" y1="45" x2="60" y2="300"></line>
+                <text x="594" y="304">effect axis 1</text><text x="15" y="40">effect axis 2</text>
+                <g id="plot-points"></g>
+              </svg>
+            </div>
+            <aside class="geometry-insight" aria-live="polite">
+              <p class="insight-label">Interpretation</p>
+              <h3 id="insight-title">One dominant effect direction</h3>
+              <p id="insight-copy">Effects line up around a common axis. This is the closest match to a feature behaving like a stable, reusable steering direction.</p>
+              <div class="signal-grid">
+                <div><span>Structure</span><strong id="signal-structure">High</strong></div>
+                <div><span>Context sensitivity</span><strong id="signal-context">Low</strong></div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="section method-section" id="method">
+        <div class="container is-max-desktop">
+          <h2 class="title is-3 has-text-centered">How FEGA works</h2>
+          <div class="method-grid">
+            <article class="method-card"><span class="step">01</span><h3>Select contexts</h3><p>Find contexts in which a candidate SAE latent is active.</p></article>
+            <article class="method-card"><span class="step">02</span><h3>Remove the feature</h3><p>Measure the downstream logit change when that latent is removed.</p></article>
+            <article class="method-card"><span class="step">03</span><h3>Map the cloud</h3><p>Analyze dimensionality, shared directions, groups, and diffusion.</p></article>
+            <article class="method-card"><span class="step">04</span><h3>Check stability</h3><p>Resample contexts to test whether the selected geometry repeats.</p></article>
+          </div>
+          <div class="phase-strip" aria-label="FEGA pipeline"><span>data prep</span><i class="fas fa-arrow-right"></i><span>compute effect</span><i class="fas fa-arrow-right"></i><span>geometry metrics</span><i class="fas fa-arrow-right"></i><span>vMF &amp; stability</span><i class="fas fa-arrow-right"></i><span>report</span></div>
+        </div>
+      </section>
+
+      <section class="section" id="citation">
+        <div class="container is-max-desktop">
+          <div class="bibtex-header"><h2 class="title is-3">BibTeX</h2><button class="copy-bibtex-btn" id="copy-bibtex"><i class="far fa-copy"></i><span>Copy</span></button></div>
+          <pre><code id="bibtex">@misc{hoang2026sparseautoencodersencodeconcepts,
+  title         = {Sparse Autoencoders Encode Both Concepts and Functions: The Downstream Geometry of Feature Effects},
+  author        = {Hoang, Phu Gia and Chatterjee, Anwoy and Chakraborty, Tanmoy and Gurevych, Iryna and Dutta, Subhabrata},
+  year          = {2026},
+  eprint        = {2607.24645},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  url           = {https://arxiv.org/abs/2607.24645}
+}</code></pre>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer"><div class="content has-text-centered"><p><strong>FEGA</strong> · UKP Lab, Technical University of Darmstadt</p><p>This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template">Academic Project Page Template</a>, as adopted by the <a href="https://ukplab.github.io/ukp-project-template/">UKP project template</a>.</p></div></footer>
+    <button class="scroll-to-top" id="scroll-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+    <script src="{{ '/assets/js/fega.js' | relative_url }}"></script>
+  </body>
+</html>

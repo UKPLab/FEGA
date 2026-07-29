@@ -1,0 +1,9 @@
+title: "FEGA: Feature-Effect Geometry Analysis"
+description: "Project page for FEGA"
+url: ""
+baseurl: ""
+markdown: kramdown
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - scripts
