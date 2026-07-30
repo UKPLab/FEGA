@@ -1,0 +1,698 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Feature-Effect Geometry Analysis (FEGA) measures and classifies the downstream logit-effect clouds produced by SAE feature interventions.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="FEGA">
+    <meta property="og:title" content="FEGA: The Downstream Geometry of Feature Effects">
+    <meta property="og:description" content="Explore how sparse autoencoder features causally affect language-model behavior across contexts.">
+    <meta property="og:url" content="https://ukplab.github.io/FEGA/">
+    <meta property="og:image" content="https://ukplab.github.io/FEGA/assets/social/unified_labels.png">
+    <meta property="og:image:secure_url" content="https://ukplab.github.io/FEGA/assets/social/unified_labels.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="7353">
+    <meta property="og:image:height" content="3212">
+    <meta property="og:image:alt" content="FEGA feature-effect geometry labels and diagnostic categories">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FEGA: The Downstream Geometry of Feature Effects">
+    <meta name="twitter:description" content="Explore how sparse autoencoder features causally affect language-model behavior across contexts.">
+    <meta name="twitter:image" content="https://ukplab.github.io/FEGA/assets/social/unified_labels.png">
+    <meta name="twitter:image:alt" content="FEGA feature-effect geometry labels and diagnostic categories">
+    <title>FEGA: Feature-Effect Geometry Analysis</title>
+    <link rel="icon" type="image/png" sizes="501x500" href="/FEGA/assets/brand/ukp-lab.png">
+    <link rel="shortcut icon" type="image/png" href="/FEGA/assets/brand/ukp-lab.png">
+    <link rel="apple-touch-icon" href="/FEGA/assets/brand/ukp-lab.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/eliahuhorwitz/Academic-project-page-template@master/static/css/index.css">
+    <link rel="stylesheet" href="/FEGA/assets/css/fega.css?v=13">
+  </head>
+  <body
+    data-value-atlas-url="/FEGA/assets/generated/ravel_atlas.json?v=6"
+    data-pointer-atlas-url="/FEGA/assets/generated/pointer_atlas.json?v=6">
+    <nav class="site-nav" aria-label="Page navigation">
+      <a class="wordmark" href="#top" aria-label="FEGA home"><strong>FEGA</strong><span>Feature-Effect Geometry Analysis</span></a>
+      <div class="nav-actions">
+      <div class="nav-links">
+        <a href="#question">Question</a>
+        <a href="#method">Method</a>
+        <a href="#findings">Findings</a>
+        <a href="#atlas">Atlas</a>
+        <a href="#citation">Citation</a>
+      </div>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode" title="Switch to dark mode">
+        <svg class="theme-toggle-icon theme-toggle-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.7 15.1A8.6 8.6 0 0 1 8.9 3.3a8.6 8.6 0 1 0 11.8 11.8Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/></svg>
+        <svg class="theme-toggle-icon theme-toggle-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v2.1M12 19.4v2.1M21.5 12h-2.1M4.6 12H2.5M18.7 5.3l-1.5 1.5M6.8 17.2l-1.5 1.5M18.7 18.7l-1.5-1.5M6.8 6.8 5.3 5.3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"/></svg>
+        <span class="theme-toggle-text" data-theme-toggle-label>Switch to dark mode</span>
+      </button>
+      </div>
+    </nav>
+
+    <main id="top">
+      <section class="hero publication-header" id="question">
+        <div class="hero-body">
+          <div class="page-width hero-grid">
+            <div class="hero-copy">
+              <div class="affiliation-row">
+                <img src="/FEGA/assets/brand/ukp-lab.png" alt="UKP Lab">
+                <span></span>
+                <img src="/FEGA/assets/brand/tu-darmstadt.svg" alt="Technical University of Darmstadt">
+              </div>
+              <p class="eyebrow">UKP Lab · Technical University of Darmstadt</p>
+            <h1><span>Sparse Autoencoders Encode Both Concepts and Functions:</span><span>The Downstream Geometry of Feature Effects</span></h1>
+              <p class="hero-statement">How comparable are a feature’s downstream effects when that feature is intervened on across contexts?</p>
+              <div class="publication-authors">
+                <a href="https://phusroyal.github.io/">Phu Gia Hoang</a><span>·</span><a href="https://c-anwoy.github.io/">Anwoy Chatterjee</a><span>·</span><a href="https://tanmoychak.com">Tanmoy Chakraborty</a><span>·</span><a href="https://www.informatik.tu-darmstadt.de/ukp/ukp_home/head_ukp/index.en.jsp">Iryna Gurevych</a><span>·</span><a href="https://subha0009.github.io/">Subhabrata Dutta</a>
+              </div>
+              <div class="publication-authors author-list">
+                <a class="author-link" href="https://phusroyal.github.io/"><img src="/FEGA/assets/brand/ukp-lab.png" alt="UKP Lab">Phu Gia Hoang<sup>*</sup></a>
+                <a class="author-link" href="https://c-anwoy.github.io/"><img src="https://tanmoychak.com/images/IITD.png" alt="IIT Delhi">Anwoy Chatterjee<sup>*</sup></a>
+                <a class="author-link" href="https://tanmoychak.com"><img src="https://tanmoychak.com/images/IITD.png" alt="IIT Delhi">Tanmoy Chakraborty</a>
+                <a class="author-link" href="https://www.informatik.tu-darmstadt.de/ukp/ukp_home/head_ukp/index.en.jsp"><img src="/FEGA/assets/brand/ukp-lab.png" alt="UKP Lab">Iryna Gurevych</a>
+                <a class="author-link" href="https://subha0009.github.io/"><img src="/FEGA/assets/brand/ukp-lab.png" alt="UKP Lab">Subhabrata Dutta</a>
+              </div>
+              <p class="equal-contribution"><sup>*</sup> Equal contribution</p>
+              <div class="affiliation-legend" aria-label="Author affiliations">
+                <p><img src="/FEGA/assets/brand/ukp-lab.png" alt="UKP Lab">UKP Lab, Technical University of Darmstadt</p>
+                <p><img src="https://tanmoychak.com/images/IITD.png" alt="IIT Delhi">Department of Electrical Engineering, Indian Institute of Technology Delhi</p>
+              </div>
+              <div class="hero-links compact-links">
+                <a class="button-link dark alpha-link" href="https://arxiv.org/abs/2607.24645"><i class="fas fa-book-open"></i> View on arXiv</a>
+                <a class="button-link quiet" href="https://github.com/UKPLab/FEGA"><i class="fab fa-github"></i> Code</a>
+                <a class="button-link quiet" href="#atlas"><i class="fas fa-circle-nodes"></i> Explore results</a>
+              </div>
+            </div>
+            <div class="hero-stage" aria-label="Looping stream of FEGA feature cards">
+              <div class="hero-stage-glow"></div>
+              <div class="hero-card-stream" id="hero-card-stream"><span>Loading RAVEL feature cards…</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="tldr-section" aria-labelledby="tldr-title">
+        <div class="narrow-width tldr-callout">
+          <p class="eyebrow">TL;DR</p>
+          <p id="tldr-title">Across SAE variants, consistent one-dimensional effects are rare: few features behave like reusable directions. Value-like features more often exhibit structured, low-dimensional effects, while pointer-like features predominantly exhibit diffuse effects.</p>
+        </div>
+      </section>
+
+      <section class="feature-types-section" aria-labelledby="feature-types-title">
+        <div class="page-width">
+          <div class="feature-types-heading">
+            <div>
+              <p class="eyebrow">Two feature roles</p>
+              <h2 class="section-title feature-types-title" id="feature-types-title">
+                <span>A value says <em>what</em>.</span>
+                <span>A pointer says <em>where or how</em>.</span>
+              </h2>
+            </div>
+            <p>What remains invariant can be the information itself or the function that the feature supports.</p>
+          </div>
+          <div class="feature-type-cards">
+            <article class="feature-type-card value-card">
+              <div class="feature-type-visual value-visual" aria-hidden="true">
+                <div class="intuition-row">
+                  <span class="intuition-input">Capital of France</span><span class="intuition-arrow">→</span>
+                  <span class="feature-state"><small>feature j tracks</small><strong>Paris</strong></span>
+                </div>
+                <div class="intuition-row">
+                  <span class="intuition-input">European city</span><span class="intuition-arrow">→</span>
+                  <span class="feature-state"><small>feature j tracks</small><strong>Paris</strong></span>
+                </div>
+                <span class="intuition-caption">same information · different contexts</span>
+              </div>
+              <div>
+                <span class="feature-type-kicker">Value-like role</span>
+                <h3>Tied to relatively context-agnostic information</h3>
+                <p>A feature associated with Paris may remain relevant across different prompts because its role is tied to the same underlying information.</p>
+              </div>
+            </article>
+            <article class="feature-type-card pointer-card">
+              <div class="feature-type-visual pointer-visual" aria-hidden="true">
+                <span class="sequence-input sequence-a">A <b>Y</b> G K ··· A</span>
+                <span class="pointer-operation"><small>feature k</small><strong>copy after match</strong></span>
+                <span class="sequence-output output-a">Y</span>
+                <span class="sequence-input sequence-b">● <b>▲</b> ◆ ■ ··· ●</span>
+                <span class="sequence-output output-b">▲</span>
+                <span class="intuition-caption">same operation · different output</span>
+              </div>
+              <div>
+                <span class="feature-type-kicker">Pointer-like role</span>
+                <h3>Supports a function over context-supplied values</h3>
+                <p>In a copying or rule-following setting, a feature may support the same operation while acting on values supplied by the context.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="method">
+        <div class="page-width method-page-width">
+          <p class="eyebrow">The method</p>
+          <h2 class="section-title">Analyze an effect cloud, not a single steering object.</h2>
+          <p class="section-lede">FEGA removes the same active SAE feature across contexts and analyzes the resulting cloud of logit changes.</p>
+          <div class="method-native-story" data-method-story>
+            <div class="method-native-sticky">
+              <div class="method-figure-meta">
+                <span>Illustrative procedure</span>
+                <span data-method-phase-label>01 / Choose contexts</span>
+              </div>
+              <figure class="method-native-figure" data-method-figure data-phase="1">
+                <svg class="method-native-diagram" data-method-diagram viewBox="0 0 1440 820" role="img" aria-labelledby="method-native-title method-native-desc">
+                  <title id="method-native-title">Interactive FEGA intervention procedure</title>
+                  <desc id="method-native-desc">Two contexts activate the same feature at layer l. The SAE reconstruction baseline and feature-ablated reconstruction pass through the frozen model tail and logit readout, producing one downstream logit effect per context.</desc>
+                  <defs>
+                    <linearGradient id="method-lane-fill" x1="0" x2="1">
+                      <stop offset="0" stop-color="#f8faff"/>
+                      <stop offset="1" stop-color="#eef3fb"/>
+                    </linearGradient>
+                    <linearGradient id="method-sae-fill" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#fff6ef"/>
+                      <stop offset="1" stop-color="#fce7d8"/>
+                    </linearGradient>
+                    <filter id="method-soft-shadow" x="-20%" y="-30%" width="140%" height="160%">
+                      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#17395d" flood-opacity=".10"/>
+                    </filter>
+                    <marker id="method-arrow-blue" markerWidth="4" markerHeight="4" refX="3.7" refY="2" orient="auto"><path d="M0 0L4 2L0 4Z" fill="#176b8d"/></marker>
+                    <marker id="method-arrow-green" markerWidth="4" markerHeight="4" refX="3.7" refY="2" orient="auto"><path d="M0 0L4 2L0 4Z" fill="#2d8f68"/></marker>
+                    <marker id="method-arrow-red" markerWidth="4" markerHeight="4" refX="3.7" refY="2" orient="auto"><path d="M0 0L4 2L0 4Z" fill="#c94f50"/></marker>
+                    <marker id="method-arrow-purple" markerWidth="4" markerHeight="4" refX="3.7" refY="2" orient="auto"><path d="M0 0L4 2L0 4Z" fill="#675ac6"/></marker>
+                  </defs>
+
+                  <g class="method-stage-group phase-lanes">
+                    <rect class="method-lane" x="130" y="48" width="1278" height="250" rx="24"/>
+                    <rect class="method-lane" x="130" y="348" width="1278" height="250" rx="24"/>
+                    <text class="method-lane-title" x="154" y="82">Frozen LLM</text>
+                    <text class="method-lane-title" x="154" y="382">Frozen LLM</text>
+                  </g>
+
+                  <g class="method-stage-group phase-context">
+                    <text class="method-prompt-label" x="12" y="125">PROMPT A</text>
+                    <text class="method-prompt-copy" x="12" y="151"><tspan>Paris is in the</tspan><tspan x="12" dy="24">country of &#8230;</tspan></text>
+                    <text class="method-prompt-label" x="12" y="425">PROMPT B</text>
+                    <text class="method-prompt-copy" x="12" y="451"><tspan>Tokyo is in the</tspan><tspan x="12" dy="24">country of &#8230;</tspan></text>
+                  </g>
+
+                  <g class="method-stage-group phase-context method-prefixes">
+                    <path class="method-model-arrow" d="M116 164H144" marker-end="url(#method-arrow-blue)"/>
+                    <path class="method-model-arrow" d="M116 464H144" marker-end="url(#method-arrow-blue)"/>
+                    <g filter="url(#method-soft-shadow)">
+                      <rect class="method-layer" x="154" y="118" width="100" height="92" rx="10"/>
+                      <rect class="method-layer" x="320" y="118" width="100" height="92" rx="10"/>
+                      <rect class="method-layer" x="154" y="418" width="100" height="92" rx="10"/>
+                      <rect class="method-layer" x="320" y="418" width="100" height="92" rx="10"/>
+                    </g>
+                    <text class="method-layer-copy" x="204" y="171" text-anchor="middle">layer 1</text>
+                    <text class="method-ellipsis" x="286" y="171" text-anchor="middle">&#8230;</text>
+                    <text class="method-layer-copy" x="370" y="171" text-anchor="middle">layer &#8467;</text>
+                    <text class="method-layer-copy" x="204" y="471" text-anchor="middle">layer 1</text>
+                    <text class="method-ellipsis" x="286" y="471" text-anchor="middle">&#8230;</text>
+                    <text class="method-layer-copy" x="370" y="471" text-anchor="middle">layer &#8467;</text>
+                  </g>
+
+                  <g class="method-stage-group phase-sae">
+                    <foreignObject class="method-math-chip method-math-chip-blue" x="433" y="119" width="88" height="40">
+                      <div xmlns="http://www.w3.org/1999/xhtml">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                          <msubsup><mi>h</mi><mi>ℓ</mi><mrow><mo>(</mo><msub><mi>c</mi><mi>a</mi></msub><mo>)</mo></mrow></msubsup>
+                        </math>
+                      </div>
+                    </foreignObject>
+                    <foreignObject class="method-math-chip method-math-chip-blue" x="433" y="469" width="88" height="40">
+                      <div xmlns="http://www.w3.org/1999/xhtml">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                          <msubsup><mi>h</mi><mi>ℓ</mi><mrow><mo>(</mo><msub><mi>c</mi><mi>b</mi></msub><mo>)</mo></mrow></msubsup>
+                        </math>
+                      </div>
+                    </foreignObject>
+                    <g class="method-sae" filter="url(#method-soft-shadow)" transform="translate(-95 0)">
+                      <rect x="628" y="136" width="198" height="350" rx="26"/>
+                      <text class="method-sae-kicker" x="727" y="168" text-anchor="middle">SHARED SAE</text>
+                      <foreignObject class="method-sae-math-subtitle" x="635" y="173" width="184" height="28">
+                        <div xmlns="http://www.w3.org/1999/xhtml"><span>intervention at layer</span><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>ℓ</mi></math></div>
+                      </foreignObject>
+                      <path class="method-sae-wing" d="M638 283L688 216V406L638 339Z"/>
+                      <path class="method-sae-wing" d="M766 216L816 283V339L766 406Z"/>
+                      <text class="method-sae-wing-copy" x="663" y="318" text-anchor="middle">enc</text>
+                      <text class="method-sae-wing-copy" x="791" y="318" text-anchor="middle">dec</text>
+                      <g class="method-latent-bank">
+                        <rect x="707" y="220" width="40" height="12" rx="4"/>
+                        <rect x="707" y="240" width="40" height="12" rx="4"/>
+                        <rect x="707" y="260" width="40" height="12" rx="4"/>
+                        <rect class="method-selected-latent" x="707" y="280" width="40" height="14" rx="4"/>
+                        <rect x="707" y="302" width="40" height="12" rx="4"/>
+                        <circle cx="727" cy="329" r="2.5"/>
+                        <circle cx="727" cy="341" r="2.5"/>
+                        <circle cx="727" cy="353" r="2.5"/>
+                        <rect x="707" y="370" width="40" height="12" rx="4"/>
+                        <rect x="707" y="390" width="40" height="12" rx="4"/>
+                      </g>
+                      <g class="method-ablate-mark" aria-label="selected feature removed">
+                        <path d="M710 292L744 282"/>
+                      </g>
+                      <foreignObject class="method-feature-math-label" x="667" y="414" width="120" height="34">
+                        <div xmlns="http://www.w3.org/1999/xhtml"><span>feature</span><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>j</mi></math></div>
+                      </foreignObject>
+                      <text class="method-feature-subtitle" x="727" y="462" text-anchor="middle">active in both contexts</text>
+                    </g>
+                    <path class="method-original-path" d="M420 164H475V291H543" marker-end="url(#method-arrow-blue)"/>
+                    <path class="method-original-path" d="M420 464H475V331H543" marker-end="url(#method-arrow-blue)"/>
+                  </g>
+
+                  <g class="method-stage-group phase-intervention">
+                    <rect class="method-tail-boundary" x="855" y="88" width="364" height="146" rx="20"/>
+                    <rect class="method-tail-boundary" x="855" y="388" width="364" height="146" rx="20"/>
+                    <rect class="method-phi-badge" x="1011" y="71" width="52" height="34" rx="17"/>
+                    <rect class="method-phi-badge" x="1011" y="371" width="52" height="34" rx="17"/>
+                    <foreignObject class="method-phi-math-label" x="1011" y="71" width="52" height="34">
+                      <div xmlns="http://www.w3.org/1999/xhtml"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>φ</mi></math></div>
+                    </foreignObject>
+                    <foreignObject class="method-phi-math-label" x="1011" y="371" width="52" height="34">
+                      <div xmlns="http://www.w3.org/1999/xhtml"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>φ</mi></math></div>
+                    </foreignObject>
+
+                    <path class="method-reconstructed-path" d="M721 287H760V132H891" marker-end="url(#method-arrow-green)"/>
+                    <path class="method-ablated-path" d="M721 303H775V190H891" marker-end="url(#method-arrow-red)"/>
+                    <path class="method-ablated-path" d="M721 319H775V432H891" marker-end="url(#method-arrow-red)"/>
+                    <path class="method-reconstructed-path" d="M721 335H760V490H891" marker-end="url(#method-arrow-green)"/>
+                    <g class="method-decoder-foreground" aria-hidden="true">
+                      <path class="method-sae-wing" d="M671 216L721 283V339L671 406Z"/>
+                      <text class="method-sae-wing-copy" x="696" y="318" text-anchor="middle">dec</text>
+                    </g>
+
+                    <foreignObject class="method-math-chip method-math-chip-green" x="780" y="91" width="75" height="38">
+                      <div xmlns="http://www.w3.org/1999/xhtml">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                          <msubsup><mi class="method-math-overbar">h</mi><mi>ℓ</mi><mrow><mo>(</mo><msub><mi>c</mi><mi>a</mi></msub><mo>)</mo></mrow></msubsup>
+                        </math>
+                      </div>
+                    </foreignObject>
+                    <foreignObject class="method-math-chip method-math-chip-red" x="780" y="194" width="75" height="42">
+                      <div xmlns="http://www.w3.org/1999/xhtml">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                          <msubsup><mover accent="true"><mi>h</mi><mo>ˆ</mo></mover><mrow><mi>ℓ</mi><mo>,</mo><mi>j</mi><mo>↓</mo></mrow><mrow><mo>(</mo><msub><mi>c</mi><mi>a</mi></msub><mo>)</mo></mrow></msubsup>
+                        </math>
+                      </div>
+                    </foreignObject>
+                    <foreignObject class="method-math-chip method-math-chip-red" x="780" y="386" width="75" height="42">
+                      <div xmlns="http://www.w3.org/1999/xhtml">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                          <msubsup><mover accent="true"><mi>h</mi><mo>ˆ</mo></mover><mrow><mi>ℓ</mi><mo>,</mo><mi>j</mi><mo>↓</mo></mrow><mrow><mo>(</mo><msub><mi>c</mi><mi>b</mi></msub><mo>)</mo></mrow></msubsup>
+                        </math>
+                      </div>
+                    </foreignObject>
+                    <foreignObject class="method-math-chip method-math-chip-green" x="780" y="493" width="75" height="38">
+                      <div xmlns="http://www.w3.org/1999/xhtml">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                          <msubsup><mi class="method-math-overbar">h</mi><mi>ℓ</mi><mrow><mo>(</mo><msub><mi>c</mi><mi>b</mi></msub><mo>)</mo></mrow></msubsup>
+                        </math>
+                      </div>
+                    </foreignObject>
+
+                    <path class="method-reconstructed-path method-tail-line" d="M984 132H1022" marker-end="url(#method-arrow-green)"/>
+                    <path class="method-ablated-path method-tail-line" d="M984 190H1022" marker-end="url(#method-arrow-red)"/>
+                    <path class="method-reconstructed-path method-tail-line" d="M1068 132H1106"/>
+                    <path class="method-ablated-path method-tail-line" d="M1068 190H1106"/>
+                    <path class="method-reconstructed-path method-tail-line" d="M1194 132H1238" marker-end="url(#method-arrow-green)"/>
+                    <path class="method-ablated-path method-tail-line" d="M1194 190H1238" marker-end="url(#method-arrow-red)"/>
+                    <path class="method-ablated-path method-tail-line" d="M984 432H1022" marker-end="url(#method-arrow-red)"/>
+                    <path class="method-reconstructed-path method-tail-line" d="M984 490H1022" marker-end="url(#method-arrow-green)"/>
+                    <path class="method-ablated-path method-tail-line" d="M1068 432H1106"/>
+                    <path class="method-reconstructed-path method-tail-line" d="M1068 490H1106"/>
+                    <path class="method-ablated-path method-tail-line" d="M1194 432H1238" marker-end="url(#method-arrow-red)"/>
+                    <path class="method-reconstructed-path method-tail-line" d="M1194 490H1238" marker-end="url(#method-arrow-green)"/>
+
+                    <g filter="url(#method-soft-shadow)">
+                      <rect class="method-layer method-tail-block" x="890" y="111" width="100" height="92" rx="10"/>
+                      <rect class="method-layer method-tail-block" x="1100" y="111" width="100" height="92" rx="10"/>
+                      <rect class="method-layer method-tail-block" x="890" y="411" width="100" height="92" rx="10"/>
+                      <rect class="method-layer method-tail-block" x="1100" y="411" width="100" height="92" rx="10"/>
+                    </g>
+                    <text class="method-layer-copy method-tail-copy" x="940" y="162" text-anchor="middle">layer &#8467;+1</text>
+                    <text class="method-layer-copy method-tail-copy" x="1150" y="162" text-anchor="middle">last layer</text>
+                    <text class="method-layer-copy method-tail-copy" x="940" y="462" text-anchor="middle">layer &#8467;+1</text>
+                    <text class="method-layer-copy method-tail-copy" x="1150" y="462" text-anchor="middle">last layer</text>
+                    <text class="method-tail-dots" x="1045" y="166" text-anchor="middle">&#8230;</text>
+                    <text class="method-tail-dots" x="1045" y="466" text-anchor="middle">&#8230;</text>
+                  </g>
+
+                  <g class="method-stage-group phase-effects">
+                    <g class="method-logit-pair" filter="url(#method-soft-shadow)">
+                      <rect class="method-logit-pill method-logit-reconstructed" x="1240" y="105" width="145" height="50" rx="11"/>
+                      <rect class="method-logit-pill method-logit-ablated" x="1240" y="165" width="145" height="50" rx="11"/>
+                      <foreignObject class="method-logit-math" x="1243" y="107" width="139" height="46">
+                        <div xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="method-logit-word">logits</span>
+                          <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow><mi>φ</mi><mo>(</mo><msubsup><mi class="method-math-overbar">h</mi><mi>ℓ</mi><mrow><mo>(</mo><msub><mi>c</mi><mi>a</mi></msub><mo>)</mo></mrow></msubsup><mo>)</mo></mrow>
+                          </math>
+                        </div>
+                      </foreignObject>
+                      <foreignObject class="method-logit-math" x="1243" y="167" width="139" height="46">
+                        <div xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="method-logit-word">logits</span>
+                          <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow><mi>φ</mi><mo>(</mo><msubsup><mover accent="true"><mi>h</mi><mo>ˆ</mo></mover><mrow><mi>ℓ</mi><mo>,</mo><mi>j</mi><mo>↓</mo></mrow><mrow><mo>(</mo><msub><mi>c</mi><mi>a</mi></msub><mo>)</mo></mrow></msubsup><mo>)</mo></mrow>
+                          </math>
+                        </div>
+                      </foreignObject>
+                    </g>
+                    <g class="method-logit-pair" filter="url(#method-soft-shadow)">
+                      <rect class="method-logit-pill method-logit-ablated" x="1240" y="405" width="145" height="50" rx="11"/>
+                      <rect class="method-logit-pill method-logit-reconstructed" x="1240" y="465" width="145" height="50" rx="11"/>
+                      <foreignObject class="method-logit-math" x="1243" y="407" width="139" height="46">
+                        <div xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="method-logit-word">logits</span>
+                          <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow><mi>φ</mi><mo>(</mo><msubsup><mover accent="true"><mi>h</mi><mo>ˆ</mo></mover><mrow><mi>ℓ</mi><mo>,</mo><mi>j</mi><mo>↓</mo></mrow><mrow><mo>(</mo><msub><mi>c</mi><mi>b</mi></msub><mo>)</mo></mrow></msubsup><mo>)</mo></mrow>
+                          </math>
+                        </div>
+                      </foreignObject>
+                      <foreignObject class="method-logit-math" x="1243" y="467" width="139" height="46">
+                        <div xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="method-logit-word">logits</span>
+                          <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow><mi>φ</mi><mo>(</mo><msubsup><mi class="method-math-overbar">h</mi><mi>ℓ</mi><mrow><mo>(</mo><msub><mi>c</mi><mi>b</mi></msub><mo>)</mo></mrow></msubsup><mo>)</mo></mrow>
+                          </math>
+                        </div>
+                      </foreignObject>
+                    </g>
+                    <rect class="method-geometry-panel" x="58" y="638" width="1324" height="162" rx="20"/>
+                    <rect class="method-geometry-title" x="492" y="620" width="456" height="45" rx="13"/>
+                    <text class="method-geometry-title-copy" x="720" y="650" text-anchor="middle">Feature Effect Geometry Analysis (FEGA)</text>
+                    <g class="method-geometry-side">
+                      <text class="method-geometry-context" x="292" y="674" text-anchor="middle">CONTEXT A</text>
+                      <g class="method-formula-math" transform="translate(112 700)">
+                        <foreignObject class="method-formula-chip" x="-20" y="-10" width="400" height="42">
+                          <div xmlns="http://www.w3.org/1999/xhtml">
+                            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                              <mrow>
+                                <mrow mathcolor="#ad3f43"><mi>φ</mi><mo>(</mo><msubsup><mover accent="true"><mi>h</mi><mo>ˆ</mo></mover><mrow><mi>ℓ</mi><mo>,</mo><mi>j</mi><mo>↓</mo></mrow><mrow><mo>(</mo><msub><mi>c</mi><mi>a</mi></msub><mo>)</mo></mrow></msubsup><mo>)</mo></mrow>
+                                <mo>−</mo>
+                                <mrow mathcolor="#247654"><mi>φ</mi><mo>(</mo><msubsup><mi class="method-math-overbar">h</mi><mi>ℓ</mi><mrow><mo>(</mo><msub><mi>c</mi><mi>a</mi></msub><mo>)</mo></mrow></msubsup><mo>)</mo></mrow>
+                                <mo>=</mo><msubsup mathcolor="#281d6b"><mi>Δ</mi><mrow><mi>j</mi><mo>,</mo><mtext>logit</mtext></mrow><mrow><mo>(</mo><msub><mi>c</mi><mi>a</mi></msub><mo>)</mo></mrow></msubsup>
+                              </mrow>
+                            </math>
+                          </div>
+                        </foreignObject>
+                        <path class="method-formula-brace" d="M50 30C50 43 66 49 84 49H145C162 49 178 60 180 70C182 60 198 49 215 49H276C294 49 310 43 310 30"/>
+                        <text class="method-formula-effect" x="180" y="91" text-anchor="middle">Effect of ablating feature in context</text>
+                      </g>
+                    </g>
+                    <rect class="method-geometry-compare" x="575" y="687" width="290" height="78" rx="12"/>
+                    <text class="method-geometry-compare-copy" x="720" y="719" text-anchor="middle">Compare directional change</text>
+                    <text class="method-geometry-compare-copy" x="720" y="747" text-anchor="middle">across contexts</text>
+                    <path class="method-geometry-arrow" d="M560 726H525" marker-end="url(#method-arrow-purple)"/>
+                    <path class="method-geometry-arrow" d="M880 726H915" marker-end="url(#method-arrow-purple)"/>
+                    <g class="method-geometry-side">
+                      <text class="method-geometry-context" x="1148" y="674" text-anchor="middle">CONTEXT B</text>
+                      <g class="method-formula-math" transform="translate(968 700)">
+                        <foreignObject class="method-formula-chip" x="-20" y="-10" width="400" height="42">
+                          <div xmlns="http://www.w3.org/1999/xhtml">
+                            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                              <mrow>
+                                <mrow mathcolor="#ad3f43"><mi>φ</mi><mo>(</mo><msubsup><mover accent="true"><mi>h</mi><mo>ˆ</mo></mover><mrow><mi>ℓ</mi><mo>,</mo><mi>j</mi><mo>↓</mo></mrow><mrow><mo>(</mo><msub><mi>c</mi><mi>b</mi></msub><mo>)</mo></mrow></msubsup><mo>)</mo></mrow>
+                                <mo>−</mo>
+                                <mrow mathcolor="#247654"><mi>φ</mi><mo>(</mo><msubsup><mi class="method-math-overbar">h</mi><mi>ℓ</mi><mrow><mo>(</mo><msub><mi>c</mi><mi>b</mi></msub><mo>)</mo></mrow></msubsup><mo>)</mo></mrow>
+                                <mo>=</mo><msubsup mathcolor="#281d6b"><mi>Δ</mi><mrow><mi>j</mi><mo>,</mo><mtext>logit</mtext></mrow><mrow><mo>(</mo><msub><mi>c</mi><mi>b</mi></msub><mo>)</mo></mrow></msubsup>
+                              </mrow>
+                            </math>
+                          </div>
+                        </foreignObject>
+                        <path class="method-formula-brace" d="M50 30C50 43 66 49 84 49H145C162 49 178 60 180 70C182 60 198 49 215 49H276C294 49 310 43 310 30"/>
+                        <text class="method-formula-effect" x="180" y="91" text-anchor="middle">Effect of ablating feature in context</text>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+                <div class="method-mobile-effects">
+                  <div class="method-mobile-effects-title">Feature Effect Geometry Analysis (FEGA)</div>
+                  <article class="method-mobile-effect-card">
+                    <span class="method-mobile-effect-context">Context A</span>
+                    <div class="method-mobile-effect-equation">
+                      <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                          <mrow mathcolor="#ad3f43"><mi>φ</mi><mo>(</mo><msubsup><mover accent="true"><mi>h</mi><mo>ˆ</mo></mover><mrow><mi>ℓ</mi><mo>,</mo><mi>j</mi><mo>↓</mo></mrow><mrow><mo>(</mo><msub><mi>c</mi><mi>a</mi></msub><mo>)</mo></mrow></msubsup><mo>)</mo></mrow>
+                          <mo>−</mo>
+                          <mrow mathcolor="#247654"><mi>φ</mi><mo>(</mo><msubsup><mi class="method-math-overbar">h</mi><mi>ℓ</mi><mrow><mo>(</mo><msub><mi>c</mi><mi>a</mi></msub><mo>)</mo></mrow></msubsup><mo>)</mo></mrow>
+                          <mo>=</mo>
+                          <msubsup mathcolor="#281d6b"><mi>Δ</mi><mrow><mi>j</mi><mo>,</mo><mtext>logit</mtext></mrow><mrow><mo>(</mo><msub><mi>c</mi><mi>a</mi></msub><mo>)</mo></mrow></msubsup>
+                        </mrow>
+                      </math>
+                    </div>
+                    <p>Effect of ablating feature in context</p>
+                  </article>
+                  <div class="method-mobile-effect-compare">
+                    <span aria-hidden="true">↑</span>
+                    <strong>Compare directional change across contexts</strong>
+                    <span aria-hidden="true">↓</span>
+                  </div>
+                  <article class="method-mobile-effect-card">
+                    <span class="method-mobile-effect-context">Context B</span>
+                    <div class="method-mobile-effect-equation">
+                      <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                          <mrow mathcolor="#ad3f43"><mi>φ</mi><mo>(</mo><msubsup><mover accent="true"><mi>h</mi><mo>ˆ</mo></mover><mrow><mi>ℓ</mi><mo>,</mo><mi>j</mi><mo>↓</mo></mrow><mrow><mo>(</mo><msub><mi>c</mi><mi>b</mi></msub><mo>)</mo></mrow></msubsup><mo>)</mo></mrow>
+                          <mo>−</mo>
+                          <mrow mathcolor="#247654"><mi>φ</mi><mo>(</mo><msubsup><mi class="method-math-overbar">h</mi><mi>ℓ</mi><mrow><mo>(</mo><msub><mi>c</mi><mi>b</mi></msub><mo>)</mo></mrow></msubsup><mo>)</mo></mrow>
+                          <mo>=</mo>
+                          <msubsup mathcolor="#281d6b"><mi>Δ</mi><mrow><mi>j</mi><mo>,</mo><mtext>logit</mtext></mrow><mrow><mo>(</mo><msub><mi>c</mi><mi>b</mi></msub><mo>)</mo></mrow></msubsup>
+                        </mrow>
+                      </math>
+                    </div>
+                    <p>Effect of ablating feature in context</p>
+                  </article>
+                </div>
+                <figcaption class="method-native-caption" aria-live="polite">
+                   <span class="caption-phase-1">Each context determines a prompt and task-specific analysis position.</span>
+                   <span class="caption-phase-2">At layer &#8467;, encode each activation and locate the same active feature <em>j</em>.</span>
+                   <span class="caption-phase-3">Green is the SAE reconstruction baseline; red is the same reconstruction with only feature <em>j</em> removed.</span>
+                   <span class="caption-phase-4">The retained logit-removal effects across valid contexts form the feature’s downstream effect cloud.</span>
+                </figcaption>
+              </figure>
+              <div class="method-native-controls" role="tablist" aria-label="Method phases">
+                <button type="button" role="tab" aria-selected="true" data-method-phase="1"><b>01</b><span>Choose contexts</span></button>
+                <button type="button" role="tab" aria-selected="false" data-method-phase="2"><b>02</b><span>Shared SAE feature</span></button>
+                <button type="button" role="tab" aria-selected="false" data-method-phase="3"><b>03</b><span>Paired intervention</span></button>
+                <button type="button" role="tab" aria-selected="false" data-method-phase="4"><b>04</b><span>Compare effects</span></button>
+              </div>
+            </div>
+            <div class="method-scroll-track method-native-scroll-track" aria-label="Method phase explanations">
+               <article data-method-step="1"><span>01</span><h3>Choose valid contexts</h3><p>For each context, trace the original activation at the task-specific analysis position to layer &#8467;.</p></article>
+               <article data-method-step="2"><span>02</span><h3>Locate one shared feature</h3><p>Encode each layer-&#8467; activation with the SAE and identify the same active feature <em>j</em>.</p></article>
+               <article data-method-step="3"><span>03</span><h3>Run paired interventions</h3><p>Use the SAE reconstruction as the baseline, then zero only feature <em>j</em> and propagate both paths through the frozen model tail.</p></article>
+               <article data-method-step="4"><span>04</span><h3>Form the effect cloud</h3><p>Subtract the baseline logit readout from the feature-ablated readout; the retained effects across valid contexts form the cloud.</p></article>
+            </div>
+          </div>
+          <div class="method-svg-story" hidden>
+            <div class="method-svg-sticky">
+              <div class="method-figure-meta"><span>Original paper visualization</span><span data-method-phase-label>01 · Choose contexts</span></div>
+              <figure class="method-svg-figure" data-method-figure data-phase="1">
+                <div class="method-svg-stage">
+                  <div class="method-svg-pulse" aria-hidden="true"></div>
+                </div>
+                <figcaption class="method-svg-caption" aria-live="polite">
+                  <span class="caption-phase-1">Two contexts activate the same feature at layer ℓ.</span>
+                  <span class="caption-phase-2">The shared SAE feature is encoded once and selectively removed before decoding.</span>
+                  <span class="caption-phase-3">Green preserves the SAE reconstruction; red removes feature j before the frozen model tail.</span>
+                  <span class="caption-phase-4">FEGA compares the resulting downstream logit effects across contexts.</span>
+                </figcaption>
+              </figure>
+              <div class="method-svg-progress" role="tablist" aria-label="Method phases">
+                <button type="button" role="tab" aria-selected="true" data-method-phase="1"><b>01</b><span>Contexts</span></button>
+                <button type="button" role="tab" aria-selected="false" data-method-phase="2"><b>02</b><span>Shared SAE</span></button>
+                <button type="button" role="tab" aria-selected="false" data-method-phase="3"><b>03</b><span>Ablation</span></button>
+                <button type="button" role="tab" aria-selected="false" data-method-phase="4"><b>04</b><span>Compare effects</span></button>
+              </div>
+            </div>
+            <div class="method-scroll-track method-svg-scroll-track" aria-label="Method phase explanations">
+              <article data-method-step="1"><span>01</span><h3>Choose paired contexts</h3><p>Collect contexts where the candidate SAE feature is active and preserve their separate model trajectories.</p></article>
+              <article data-method-step="2"><span>02</span><h3>Locate the shared feature</h3><p>At layer ℓ, encode both residuals and identify the same active feature j in the SAE representation.</p></article>
+              <article data-method-step="3"><span>03</span><h3>Run paired interventions</h3><p>Propagate the reconstructed baseline and feature-ablated reconstruction through the frozen model tail.</p></article>
+              <article data-method-step="4"><span>04</span><h3>Compare effect geometry</h3><p>Subtract the paired logit readouts and compare the resulting directional changes across contexts.</p></article>
+            </div>
+          </div>
+          <div class="method-scroll-story method-legacy-visualization" hidden>
+            <div class="method-figure-shell">
+              <div class="method-figure-meta"><span><i class="fas fa-wand-magic-sparkles"></i> Illustrative procedure</span><span data-method-phase-label>01 · Choose contexts</span></div>
+              <div class="method-figure" data-method-figure data-phase="1" data-task="city">
+                <div class="method-task-chip" aria-live="polite"><span class="task-city">RAVEL-style city–country contexts</span><span class="task-copy">Literal Sequence Copying contexts</span></div>
+                <div class="method-residual-key" aria-label="Residual stream legend"><span class="residual-original">hℓ original</span><span class="residual-reconstructed">h̄ℓ reconstructed</span><span class="residual-ablated">ĥℓ,j↓ ablated</span></div>
+                <div class="method-contexts" aria-hidden="true">
+                  <div class="method-context-pair task-city"><article><small>Context A</small><strong>Paris is in the country of</strong><b>France</b></article><article><small>Context B</small><strong>Tokyo is in the country of</strong><b>Japan</b></article></div>
+                  <div class="method-context-pair task-copy"><article><small>Context A</small><strong>blue · green · blue →</strong><b>green</b></article><article><small>Context B</small><strong>circle · square · circle →</strong><b>square</b></article></div>
+                </div>
+                <svg class="method-diagram" viewBox="0 0 1120 440" role="img" aria-labelledby="method-diagram-title method-diagram-desc">
+                  <title id="method-diagram-title">Feature Effect Geometry Analysis procedure</title>
+                  <desc id="method-diagram-desc">Two contexts activate an SAE feature. A reconstructed baseline and feature-ablated reconstruction pass through a frozen model tail; their logit differences form an effect cloud.</desc>
+                  <defs><linearGradient id="method-tail" x1="0" x2="1"><stop stop-color="#deebf7"/><stop offset="1" stop-color="#edf3fa"/></linearGradient><filter id="method-shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#183b5c" flood-opacity=".12"/></filter></defs>
+                  <g class="diagram-two-lane" filter="url(#method-shadow)">
+                    <g class="lane-model lane-model-a"><rect x="218" y="87" width="220" height="105" rx="16"/><text x="328" y="115" text-anchor="middle">MODEL PREFIX · cₐ</text><text class="diagram-subtitle" x="328" y="134" text-anchor="middle">layers … ℓ − 1</text><g><rect x="252" y="149" width="34" height="25" rx="5"/><rect x="302" y="149" width="34" height="25" rx="5"/><rect x="352" y="149" width="34" height="25" rx="5"/></g></g>
+                    <g class="lane-model lane-model-b"><rect x="218" y="248" width="220" height="105" rx="16"/><text x="328" y="276" text-anchor="middle">MODEL PREFIX · cᵦ</text><text class="diagram-subtitle" x="328" y="295" text-anchor="middle">layers … ℓ − 1</text><g><rect x="252" y="310" width="34" height="25" rx="5"/><rect x="302" y="310" width="34" height="25" rx="5"/><rect x="352" y="310" width="34" height="25" rx="5"/></g></g>
+                    <g class="lane-sae"><rect x="476" y="104" width="150" height="232" rx="20"/><text x="551" y="136" text-anchor="middle">SHARED SAE</text><text class="diagram-subtitle" x="551" y="156" text-anchor="middle">intervention at layer ℓ</text><g class="latent-grid"><rect x="506" y="178" width="28" height="28" rx="6"/><rect x="543" y="178" width="28" height="28" rx="6"/><rect x="580" y="178" width="28" height="28" rx="6"/><rect x="506" y="215" width="28" height="28" rx="6"/><rect class="selected-latent" x="543" y="215" width="28" height="28" rx="6"/><rect x="580" y="215" width="28" height="28" rx="6"/></g><text class="latent-label" x="551" y="272" text-anchor="middle">feature j active in both</text><text class="diagram-subtitle" x="551" y="292" text-anchor="middle">remove j only on red paths</text></g>
+                    <g class="lane-tail lane-tail-a"><rect x="666" y="87" width="218" height="105" rx="16"/><text x="775" y="115" text-anchor="middle">FROZEN MODEL TAIL</text><text class="diagram-subtitle" x="775" y="134" text-anchor="middle">layers ℓ + 1 … final layer</text><g><rect x="705" y="149" width="34" height="25" rx="5"/><rect x="757" y="149" width="34" height="25" rx="5"/><rect x="809" y="149" width="34" height="25" rx="5"/></g></g>
+                    <g class="lane-tail lane-tail-b"><rect x="666" y="248" width="218" height="105" rx="16"/><text x="775" y="276" text-anchor="middle">FROZEN MODEL TAIL</text><text class="diagram-subtitle" x="775" y="295" text-anchor="middle">layers ℓ + 1 … final layer</text><g><rect x="705" y="310" width="34" height="25" rx="5"/><rect x="757" y="310" width="34" height="25" rx="5"/><rect x="809" y="310" width="34" height="25" rx="5"/></g></g>
+                    <g class="lane-originals"><path d="M438 139 H476"/><path d="M438 300 H476"/><text x="446" y="128">hℓ</text><text x="446" y="289">hℓ</text></g>
+                    <g class="lane-residuals"><path class="lane-green" d="M626 130 C643 130 648 132 666 132 H884"/><path class="lane-red" d="M626 148 C643 148 648 151 666 151 H884"/><path class="lane-green" d="M626 291 C643 291 648 293 666 293 H884"/><path class="lane-red" d="M626 309 C643 309 648 312 666 312 H884"/><text class="lane-green-label" x="632" y="120">h̄ℓ</text><text class="lane-red-label" x="632" y="167">ĥℓ,j↓</text></g>
+                    <g class="lane-readouts"><rect x="908" y="105" width="70" height="68" rx="12"/><rect x="908" y="266" width="70" height="68" rx="12"/><text x="943" y="133" text-anchor="middle">φ</text><text class="diagram-subtitle" x="943" y="151" text-anchor="middle">Δ logit</text><text x="943" y="294" text-anchor="middle">φ</text><text class="diagram-subtitle" x="943" y="312" text-anchor="middle">Δ logit</text></g>
+                    <g class="lane-effects"><path class="effect-arrow effect-one" d="M984 137 l45 -25"/><path class="effect-arrow effect-two" d="M984 298 l48 22"/></g>
+                    <g class="lane-cloud"><circle class="cloud-ring" cx="1052" cy="218" r="66"/><line class="cloud-axis" x1="1005" y1="254" x2="1096" y2="181"/><circle cx="1022" cy="235" r="4"/><circle cx="1037" cy="222" r="4"/><circle cx="1052" cy="211" r="4"/><circle cx="1066" cy="200" r="4"/><circle cx="1078" cy="219" r="4"/><circle cx="1055" cy="240" r="4"/><text x="1052" y="308" text-anchor="middle">effect cloud</text></g>
+                  </g>
+                  <g class="diagram-input"><path class="diagram-connector" d="M190 132 C205 132 196 170 206 170"/><path class="diagram-connector" d="M190 308 C205 308 196 270 206 270"/><circle cx="190" cy="132" r="5"/><circle cx="190" cy="308" r="5"/></g>
+                  <g class="diagram-prefix" filter="url(#method-shadow)"><rect x="202" y="108" width="82" height="224" rx="18"/><text x="243" y="142" text-anchor="middle">MODEL</text><text class="diagram-subtitle" x="243" y="163" text-anchor="middle">layers … ℓ − 1</text><g class="prefix-layers"><rect x="220" y="184" width="46" height="28" rx="6"/><rect x="220" y="221" width="46" height="28" rx="6"/><rect x="220" y="258" width="46" height="28" rx="6"/></g></g>
+                  <g class="diagram-residual-input"><path class="original-residual" d="M284 218 L300 218"/><text class="original-label" x="286" y="204">hℓ</text></g>
+                  <g class="diagram-sae" filter="url(#method-shadow)"><rect x="300" y="108" width="194" height="224" rx="20"/><text x="397" y="142" text-anchor="middle">SPARSE AUTOENCODER</text><text class="diagram-subtitle" x="397" y="163" text-anchor="middle">layer ℓ reconstruction</text><g class="latent-grid"><rect x="330" y="190" width="34" height="34" rx="7"/><rect x="372" y="190" width="34" height="34" rx="7"/><rect class="selected-latent" x="414" y="190" width="34" height="34" rx="7"/><rect x="330" y="232" width="34" height="34" rx="7"/><rect x="372" y="232" width="34" height="34" rx="7"/><rect x="414" y="232" width="34" height="34" rx="7"/><rect x="456" y="232" width="18" height="34" rx="7"/></g><text class="latent-label" x="431" y="291" text-anchor="middle">shared feature j</text></g>
+                  <g class="diagram-tail" filter="url(#method-shadow)"><rect x="584" y="94" width="236" height="252" rx="22" fill="url(#method-tail)"/><text x="702" y="128" text-anchor="middle">FROZEN MODEL TAIL</text><text class="diagram-subtitle" x="702" y="149" text-anchor="middle">layers ℓ + 1 … final layer</text><g class="tail-layers"><rect x="616" y="178" width="42" height="126" rx="8"/><rect x="669" y="166" width="42" height="138" rx="8"/><rect x="722" y="178" width="42" height="126" rx="8"/></g></g>
+                  <g class="diagram-paths"><path class="baseline-path" d="M494 190 C534 190 539 170 584 170"/><path class="baseline-path" d="M820 170 C856 170 865 168 890 168"/><path class="ablation-path" d="M494 256 C536 256 540 278 584 278"/><path class="ablation-path" d="M820 278 C856 278 865 279 890 279"/><text class="baseline-label" x="516" y="181">h̄ℓ reconstructed</text><text class="ablation-label" x="512" y="277">ĥℓ,j↓ ablated</text></g>
+                  <g class="diagram-readout" filter="url(#method-shadow)"><rect x="884" y="128" width="108" height="190" rx="18"/><text x="938" y="158" text-anchor="middle">LOGITS</text><line x1="908" y1="193" x2="968" y2="193"/><line x1="908" y1="223" x2="976" y2="223"/><line x1="908" y1="253" x2="957" y2="253"/><circle class="readout-baseline" cx="975" cy="193" r="6"/><circle class="readout-ablation" cx="982" cy="223" r="6"/></g>
+                  <g class="diagram-effects"><path class="effect-arrow effect-one" d="M1009 198 l48 -22"/><path class="effect-arrow effect-two" d="M1009 232 l52 13"/><path class="effect-arrow effect-three" d="M1009 258 l37 39"/><text x="1066" y="157" text-anchor="middle">Δ logit</text></g>
+                  <g class="diagram-cloud"><circle class="cloud-ring" cx="1054" cy="324" r="62"/><line class="cloud-axis" x1="1005" y1="368" x2="1100" y2="282"/><circle cx="1025" cy="342" r="4"/><circle cx="1041" cy="329" r="4"/><circle cx="1055" cy="318" r="4"/><circle cx="1070" cy="305" r="4"/><circle cx="1077" cy="332" r="4"/><circle cx="1049" cy="350" r="4"/><text x="1054" y="405" text-anchor="middle">effect cloud</text></g>
+                </svg>
+                <p class="method-figure-caption"><span class="caption-phase-1">Sample contexts establish where a feature is active.</span><span class="caption-phase-2">The blue residual hℓ reaches the SAE site, where one latent is isolated.</span><span class="caption-phase-3">Green h̄ℓ retains the reconstruction; red ĥℓ,j↓ removes only feature j.</span><span class="caption-phase-4">Each context contributes one downstream effect vector.</span></p>
+              </div>
+              <div class="method-phase-controls" role="tablist" aria-label="Method phases">
+                <button type="button" role="tab" aria-selected="true" data-method-phase="1"><b>01</b><span>Choose contexts</span></button>
+                <button type="button" role="tab" aria-selected="false" data-method-phase="2"><b>02</b><span>Select feature</span></button>
+                <button type="button" role="tab" aria-selected="false" data-method-phase="3"><b>03</b><span>Remove latent</span></button>
+                <button type="button" role="tab" aria-selected="false" data-method-phase="4"><b>04</b><span>Map effects</span></button>
+              </div>
+            </div>
+            <div class="method-scroll-track" aria-label="Method phase explanations">
+              <article data-method-step="1"><span>01</span><h3>Choose paired contexts</h3><p>For each task, collect valid contexts where the candidate latent is active. The illustration alternates between a value-like city-country task and a pointer-like copying task.</p></article>
+              <article data-method-step="2"><span>02</span><h3>Select one shared latent</h3><p>Encode each activation with the SAE, then identify feature <em>j</em> in the shared latent representation.</p></article>
+              <article data-method-step="3"><span>03</span><h3>Remove only that latent</h3><p>Compare the SAE reconstruction with the same reconstruction after setting feature <em>j</em> to zero. The frozen model tail receives both paths.</p></article>
+              <article data-method-step="4"><span>04</span><h3>Map the effect cloud</h3><p>Subtract downstream logit readouts across every valid context. FEGA then studies the cloud’s directions, subspaces, modes, and residual structure.</p></article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section findings-section" id="findings">
+        <div class="page-width">
+          <div class="results-heading-row">
+            <div>
+              <p class="eyebrow" id="findings-eyebrow">Value-like features · RAVEL results</p>
+              <h2 class="section-title" id="findings-title">Value-like effects more often show low-dimensional organization.</h2>
+            </div>
+            <div class="feature-mode-switch" role="tablist" aria-label="Feature type">
+              <button type="button" role="tab" aria-selected="true" data-feature-mode="value">Value-like</button>
+              <button type="button" role="tab" aria-selected="false" data-feature-mode="pointer">Pointer-like</button>
+            </div>
+          </div>
+          <p class="section-lede" id="findings-lede">Value-like candidates exhibit low-dimensional structure more often than pointer-like candidates. Their structured effects usually span multiple directions, while directed rays remain rare.</p>
+          <div id="architecture-summary" class="architecture-summary" aria-live="polite">
+            <p class="loading-message">Loading result summaries…</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section atlas-section" id="atlas">
+        <div class="page-width">
+          <div class="atlas-heading">
+            <div>
+              <p class="eyebrow" id="atlas-eyebrow">Interactive value-like geometry atlas</p>
+              <h2 class="section-title">Inspect the reported feature map.</h2>
+              <div class="feature-mode-switch atlas-mode-switch" role="tablist" aria-label="Atlas feature type">
+                <button type="button" role="tab" aria-selected="true" data-feature-mode="value">Value-like</button>
+                <button type="button" role="tab" aria-selected="false" data-feature-mode="pointer">Pointer-like</button>
+              </div>
+            </div>
+            <p id="atlas-lede">Select an SAE architecture or geometry label, then hover or select a point to inspect its recorded label and metrics.</p>
+          </div>
+          <div class="atlas-shell">
+            <aside class="atlas-controls" aria-label="Atlas filters">
+              <fieldset id="task-filter" hidden><legend>Pointer task</legend><div id="task-controls" class="control-stack"></div></fieldset>
+              <fieldset><legend>SAE architecture</legend><div id="architecture-controls" class="control-stack"></div></fieldset>
+              <fieldset><legend>Geometry label</legend><div id="label-controls" class="control-stack label-controls"></div></fieldset>
+              <div class="atlas-count"><strong id="atlas-count">—</strong><span id="atlas-count-label">features shown</span></div>
+            </aside>
+            <div class="atlas-plot-wrap">
+              <div class="plot-topline">
+                <span id="plot-title">Loading atlas…</span>
+                <span class="plot-key"><span>each dot = one feature</span><span>red ring = rendered example</span></span>
+              </div>
+              <canvas id="atlas-canvas" width="840" height="520" aria-label="Interactive UMAP plot of FEGA feature geometry labels"></canvas>
+              <div id="atlas-tooltip" class="atlas-tooltip" role="status" hidden></div>
+              <p class="plot-caption">UMAP positions and geometry labels are read from FEGA’s per-feature reporting artifacts.</p>
+            </div>
+            <aside class="feature-panel" id="feature-panel" aria-live="polite">
+              <p class="panel-kicker">Feature details</p>
+              <h3 id="feature-title">Choose a label</h3>
+              <p id="feature-description">Select any point to inspect its recorded geometry metrics.</p>
+              <div class="metric-grid" id="metric-grid"></div>
+              <div id="feature-visuals" class="feature-visuals" hidden>
+                <figure>
+                  <figcaption>Normalized directions</figcaption>
+                  <img id="feature-sphere" alt="Normalized downstream effect directions" hidden>
+                </figure>
+                <figure>
+                  <figcaption>2D effect view</figcaption>
+                  <img id="feature-projection" alt="Two-dimensional downstream effect projection" hidden>
+                </figure>
+              </div>
+              <p id="feature-empty" class="feature-empty">Select any point to inspect its recorded geometry metrics.</p>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="section takeaways-section" id="takeaways">
+        <div class="page-width">
+          <div class="takeaways-heading">
+            <div>
+              <p class="eyebrow">Takeaways</p>
+              <h2 class="section-title">What FEGA reveals.</h2>
+            </div>
+            <p>Our results show that a feature can be interpretable and causally relevant without providing a stable direction for steering.</p>
+          </div>
+          <div class="takeaway-queue" aria-label="Paper takeaways">
+            <article class="takeaway-card takeaway-value">
+              <span>01 · Value-like</span>
+              <h3>Value-like candidates exhibit low-dimensional structure more often than pointer-like candidates.</h3>
+              <p>Their structured effects usually span multiple directions, while directed rays remain rare.</p>
+            </article>
+            <article class="takeaway-card takeaway-pointer">
+              <span>02 · Pointer-like</span>
+              <h3>Mapped pointer-like effects are overwhelmingly diffuse.</h3>
+              <p>Among pointer-like candidates with a mapped geometry, stable low-dimensional structures are rare, consistent with their effects changing as the prompt-local target changes.</p>
+            </article>
+            <article class="takeaway-card takeaway-context">
+              <span>03 · Context</span>
+              <h3>A shared functional role need not produce a shared direction in logit space.</h3>
+              <p>A feature may support a similar operation across prompts, but copying “apple” and copying “car”, for instance, require effects on different output logits. As the relevant value changes, the downstream effect can change with it.</p>
+            </article>
+            <article class="takeaway-card takeaway-causal">
+              <span>04 · Causal evidence</span>
+              <h3>Selected pointer-like feature sets contribute causally to task performance.</h3>
+              <p>Jointly ablating them produces consistently larger drops in accuracy compared to same-sized matched random controls.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section citation-section" id="citation">
+        <div class="narrow-width">
+          <div class="bibtex-header"><div><p class="eyebrow">Citation</p><h2 class="section-title">BibTeX</h2></div><button class="copy-bibtex-btn" id="copy-bibtex"><i class="far fa-copy"></i><span>Copy</span></button></div>
+          <pre><code id="bibtex">@misc{hoang2026sparseautoencodersencodeconcepts,
+  title         = {Sparse Autoencoders Encode Both Concepts and Functions: The Downstream Geometry of Feature Effects},
+  author        = {Hoang, Phu Gia and Chatterjee, Anwoy and Chakraborty, Tanmoy and Gurevych, Iryna and Dutta, Subhabrata},
+  year          = {2026}, eprint = {2607.24645}, archivePrefix = {arXiv},
+  primaryClass  = {cs.LG}, url = {https://arxiv.org/abs/2607.24645}
+}</code></pre>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer"><div class="narrow-width"><p><strong>FEGA</strong> · UKP Lab, Technical University of Darmstadt</p><p>The page uses the <a href="https://ukplab.github.io/ukp-project-template/">UKP project template</a>, adopted from the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template">Academic Project Page Template</a>. Interactive result figures are derived from this repository’s exported artifacts.</p></div></footer>
+    <button class="scroll-to-top" id="scroll-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+    <div id="visitor-tracker" hidden aria-hidden="true">
+      <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=uIHHtmnzwKZ12eNwJSzK97JspO1XOqhVds8QipRf2Nc&amp;cl=ffffff&amp;w=a"></script>
+    </div>
+    <script src="/FEGA/assets/js/fega.js?v=12"></script>
+  </body>
+</html>
